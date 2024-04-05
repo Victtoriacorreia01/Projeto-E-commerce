@@ -1,5 +1,6 @@
+import Head from 'next/head';
 
-export default function Home() {
+export default function Account() {
   return (
     <div className="min-h-screen bg-red-500 flex justify-center items-center">
       <Head>
