@@ -29,7 +29,7 @@ export default function Home() {
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
           <div className="text-center md:text-left">
             <p className="text-red-700 font-semibold mb-2">EXTRA 55% OFF IN SPRING SALE</p>
-            <h1 className="text-4xl font-light mb-8">Discover & Shop<br />Don't miss this opportunity</h1>
+            <h1 className="text-4xl font-light mb-8">Discover & Shop<br />Dont miss this opportunity</h1>
             <button className="btn btn-primary">SHOP NOW</button>
           </div>
           <div className="w-full md:w-1/2">
