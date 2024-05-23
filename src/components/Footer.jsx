@@ -6,14 +6,16 @@ import Image from "next/image";
 
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
-import Logo from "@/assets/logo2.png";
+import Logo from "../assets/logo2.png";
 
 export default function Footer() {
   return (
     <footer className="bg-black py-6">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between text-white">
         <div className="flex items-center mb-4 md:mb-0 mr-auto">
-          <Image src={Logo} className="h-12 mr-7" alt="Logo da Empresa" />
+          <div className="">
+          <Image src={Logo} width={180} height={50} className="mr-10" alt="Logo da Empresa" />
+          </div>
           <div>
             <h2 className="text-lg font-semibold mb-2 text-red-400">
               Entre em Contato
@@ -26,27 +28,27 @@ export default function Footer() {
           <nav className="md:ml-6">
             <ul className="flex space-x-4">
               <li>
-                <Link href="/" className="hover:underline">
+                <Link href="/" className="hover:text-green-500">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:underline">
+                <Link href="/products" className="hover:text-green-500">
                   Produtos
                 </Link>
               </li>
               <li>
-                <Link href="/sobre" className="hover:underline">
+                <Link href="/sobre" className="hover:text-green-500">
                   Sobre Nós
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:underline">
+                <Link href="/blog" className="hover:text-green-500">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contato" className="hover:underline">
+                <Link href="/contato" className="hover:text-green-500 mr-24">
                   Contato
                 </Link>
               </li>
@@ -57,24 +59,24 @@ export default function Footer() {
             <div className="flex space-x-2 mt-2">
               <a
                 href="https://facebook.com/minhaloja"
-                className="text-white hover:text-gray-200"
+                className="text-white hover:text-red-500"
                 target="_blank"
               >
-                <FaFacebook size="2rem" />
+                <FaFacebook size="1rem" className="mr-8 ml-8" />
               </a>
               <a
                 href="https://twitter.com/minhaloja"
-                className="text-white hover:text-gray-200"
+                className="text-white hover:text-red-500"
                 target="_blank"
               >
-                <FaTwitter size="2rem" />
+                <FaTwitter size="1rem" className="mr-8" />
               </a>
               <a
                 href="https://instagram.com/minhaloja"
-                className="text-white hover:text-gray-200"
+                className="text-white hover:text-red-500"
                 target="_blank"
               >
-                <FaInstagram size="2rem" />
+                <FaInstagram size="1rem" className="mr-5" />
               </a>
             </div>
           </div>

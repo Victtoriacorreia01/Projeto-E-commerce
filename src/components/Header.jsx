@@ -1,8 +1,8 @@
 import Link from "next/link";
+import carrinho from "../assets/cart-shopping-solid (1).svg"
 
 import Image from "next/image";
-
-import Logo from "@/assets/logo.png";
+import Logo from "../assets/logo.png";
 
 export default function Header() {
   return (
@@ -54,11 +54,11 @@ export default function Header() {
               />
             </div>
             <nav className="w-full bg-white px-32 py-5 flex items-center justify-between mt-[-16px]">
-              <ul className="flex space-x-10 ml-4">
+              <ul className="flex space-x-10 ml-0">
                 <li>
                   <Link
                     href="/"
-                    className="text-black hover:text-green-700 text-sm md:text-lg xl:text-xl "
+                    className="text-black hover:text-green-700 text-1xl   "
                   >
                     Home
                   </Link>
@@ -66,15 +66,15 @@ export default function Header() {
                 <li>
                   <Link
                     href="/shop/feminino"
-                    className="text-black hover:text-green-700 text-sm md:text-lg xl:text-xl "
+                    className="text-black hover:text-green-700 text-1xl  "
                   >
-                    Feminino
+                    Feminino{" "}
                   </Link>
                 </li>
                 <li className="relative">
                   <Link
                     href="/shop/masculino"
-                    className="text-black hover:text-green-700 text-sm md:text-lg xl:text-xl"
+                    className="text-black hover:text-green-700 text-1xl "
                   >
                     Masculino{" "}
                     <i className="ri-arrow-down-s-line text-xs ml-1"></i>
@@ -82,20 +82,22 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    href="/shop/esports"
-                    className="text-black hover:text-green-700 text-sm md:text-lg xl:text-xl"
+                    href="/shop/esportes"
+                    className="text-black hover:text-green-700 text-1xl "
                   >
-                    Esporte
+                    Esporte{" "}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/shops/beleza"
-                    className="text-black hover:text-green-700 text-sm md:text-lg xl:text-xl"
+                    href="/shop/beleza"
+                    className="text-black hover:text-green-700 text-1xl "
                   >
-                    Beleza
+                    Beleza{" "}
+                    <i className="ri-arrow-down-s-line text-xs ml-1"></i>
                   </Link>
                 </li>
+                
                 <div className="absolute left-0 mt-2 py-2 bg-gray-800 rounded-md hidden"></div>
 
                 <div className="right flex items-center space-x-4 mt-[-16px]">
@@ -115,7 +117,11 @@ export default function Header() {
                       Procure
                     </button>
                   </form>
+                  <button style={{ color: 'black', fontSize: '3rem' }}>
+                    <image src={carrinho} alt="carrinho" />
+                  </button>
                 </div>
+                
               </ul>
             </nav>
             <button className="md:hidden"></button>
