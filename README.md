@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Descrição:
+Ziara é um e-commerce em desenvolvimento, utilizando Next.js, Tailwind CSS, JavaScript e Node.js, com um banco de dados para armazenamento de dados. Ele visa oferecer uma plataforma elegante e intuitiva para compra e venda de uma variedade de produtos.
 
-## Getting Started
+### Funcionalidades Planejadas:
+Experiência do Usuário Aprimorada: Ziara tem como objetivo oferecer uma experiência de compra on-line perfeita, com uma interface de usuário intuitiva e responsiva.
 
-First, run the development server:
+Busca Eficiente: Os usuários poderão pesquisar e encontrar os produtos desejados utilizando a função de busca integrada.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Carrinho de Compras: Implementaremos a funcionalidade de adicionar produtos ao carrinho de compras, visualizar itens selecionados e proceder para o checkout com facilidade.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Checkout Seguro: Ziara visa garantir um processo de checkout seguro e tranquilo para os clientes, com opções de pagamento seguras e confiáveis.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Gerenciamento de Produtos: Os vendedores poderão adicionar, editar ou remover produtos da plataforma, garantindo um catálogo sempre atualizado.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tecnologias a serem ultilizadas:
+Next.js: Next.js é um framework React popular para construir aplicativos web escaláveis e de alto desempenho.
 
-## Learn More
+Tailwind CSS: Tailwind CSS é uma estrutura CSS utilitária altamente configurável para criação de interfaces de usuário flexíveis e elegantes.
 
-To learn more about Next.js, take a look at the following resources:
+Node.js: Node.js é uma plataforma de desenvolvimento de aplicativos que permite executar JavaScript do lado do servidor.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Banco de Dados: Utilizaremos um banco de dados para armazenamento de dados.
