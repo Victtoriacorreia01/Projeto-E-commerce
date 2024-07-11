@@ -1,9 +1,8 @@
 'use client'
 
-import Logo from "../../../assets/logo.png";
-
-import Image from "next/image";
-
+import React, { useState } from 'react'
+import Logo from "../../../assets/logo.png"
+import Image from "next/image"
 import { useForm } from 'react-hook-form'
 import z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -19,6 +18,8 @@ const createUserFormSchema = z.object({
 })
 
 export default function Cadastro() {
+    const [loading, setLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
         defaultValues: {
             email: '',
@@ -32,8 +33,7 @@ export default function Cadastro() {
     })
 
     const onSubmit = async (data) => {
-
-        console.log(data)
+        setLoading(true)
 
         try {
             const url = 'http://localhost:3333/users'
@@ -48,21 +48,46 @@ export default function Cadastro() {
 
             if (!request.ok) {
                 const error = await request.json()
+                throw new Error(error.message)
             }
 
             const response = await request.json()
             console.log(response)
+            setLoading(false)
+            setSuccess(true)
             reset()
         } catch (error) {
             console.error(error)
+            setLoading(false)
         }
     }
 
     const onError = (errors) => console.log(errors)
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-xl w-full space-y-8 border border-gray-200 rounded-lg p-8 shadow-md">
+        <div className="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            {loading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+                    <div className="loader"></div>
+                </div>
+            )}
+
+            {success && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+                    <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+                        <h2 className="mb-4 text-2xl">Cadastrado com sucesso!</h2>
+                        <p>Olhe o seu email, por favor!</p>
+                        <button
+                            onClick={() => setSuccess(false)}
+                            className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg"
+                        >
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            <div className={`max-w-xl w-full space-y-8 border border-gray-200 rounded-lg p-8 shadow-md ${loading || success ? 'filter blur-sm' : ''}`}>
                 <div className="mt-[-20px] mb-8  flex items-center justify-center">
                     <Image
                         className="text-center"
@@ -127,7 +152,7 @@ export default function Cadastro() {
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div className="mb-6">
                             <label htmlFor="senha" className="sr-only">
-                                Corfirmar Senha
+                                Confirmar Senha
                             </label>
                             <input
                                 id="senha"
@@ -146,7 +171,7 @@ export default function Cadastro() {
                             type="submit"
                             className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-medium rounded-full text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            {isSubmitting ? 'Enviando formulário' : 'Cadastre-se'}
+                            {isSubmitting || loading ? 'Enviando formulário' : 'Cadastre-se'}
                         </button>
                     </div>
                     <button type='submit' className="text-center hover:text-pink-600" >

@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div>
             <h2 className="text-lg font-semibold mb-2 text-red-400">
-              Entre em Contato
+              Contact
             </h2>
             <p>Telefone: (00) 1234-5678</p>
             <p>Email: contato@example.com</p>
@@ -55,7 +55,7 @@ export default function Footer() {
             </ul>
           </nav>
           <div className="md:ml-6">
-            <p>Siga-nos nas redes sociais:</p>
+            <p>Follow our social midias:</p>
             <div className="flex space-x-2 mt-2">
               <a
                 href="https://facebook.com/minhaloja"

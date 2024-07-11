@@ -1,8 +1,9 @@
 import Link from "next/link";
-import carrinho from "../assets/cart-shopping-solid (1).svg"
-
 import Image from "next/image";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo2.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faHeart, faHeadset } from "@fortawesome/free-solid-svg-icons";
+import '../lib/fontawesome'; 
 
 export default function Header() {
   return (
@@ -34,7 +35,7 @@ export default function Header() {
                     href="/shop/patrocinio"
                     className="text-black hover:text-green-700 text-sm"
                   >
-                    Patrocinadores
+                    Meus pedidos!
                   </Link>
                 </li>
               </ul>
@@ -42,23 +43,18 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="bg-white">
+      <div className="bg-black relative">
         <div className="container mx-auto py-4">
           <div className="flex justify-between items-center">
-            <div className="mt-[-30px] ">
-              <Image
-                className="text-orange-600 h-auto "
-                src={Logo}
-                style={{ minWidth: "200px" }}
-                alt="Logo do Empresa"
-              />
+            <div className="mt-[-10px]">
+              <Image src={Logo} alt="Logo do Empresa" width={200} height={100} />
             </div>
-            <nav className="w-full bg-white px-32 py-5 flex items-center justify-between mt-[-16px]">
-              <ul className="flex space-x-10 ml-0">
+            <nav className="w-full bg- px-32 py-5 flex items-center justify-between mt-[-8px]">
+              <ul className="flex space-x-10">
                 <li>
                   <Link
                     href="/"
-                    className="text-black hover:text-green-700 text-1xl   "
+                    className="text-white hover:text-red-400 text-1xl"
                   >
                     Home
                   </Link>
@@ -66,7 +62,7 @@ export default function Header() {
                 <li>
                   <Link
                     href="/shop/feminino"
-                    className="text-black hover:text-green-700 text-1xl  "
+                    className="text-white hover:text-red-400 text-1xl"
                   >
                     Feminino{" "}
                   </Link>
@@ -74,7 +70,7 @@ export default function Header() {
                 <li className="relative">
                   <Link
                     href="/shop/masculino"
-                    className="text-black hover:text-green-700 text-1xl "
+                    className="text-white hover:text-red-400 text-1xl"
                   >
                     Masculino{" "}
                     <i className="ri-arrow-down-s-line text-xs ml-1"></i>
@@ -83,7 +79,7 @@ export default function Header() {
                 <li>
                   <Link
                     href="/shop/esportes"
-                    className="text-black hover:text-green-700 text-1xl "
+                    className="text-white hover:text-red-400 text-1xl"
                   >
                     Esporte{" "}
                   </Link>
@@ -91,40 +87,45 @@ export default function Header() {
                 <li>
                   <Link
                     href="/shop/beleza"
-                    className="text-black hover:text-green-700 text-1xl "
+                    className="text-white hover:text-red-400 text-1xl"
                   >
                     Beleza{" "}
                     <i className="ri-arrow-down-s-line text-xs ml-1"></i>
                   </Link>
                 </li>
-                
-                <div className="absolute left-0 mt-2 py-2 bg-gray-800 rounded-md hidden"></div>
-
-                <div className="right flex items-center space-x-4 mt-[-16px]">
-                  <form className="flex items-center bg-gray-100 rounded-md px-8 py-2 shadow-md ml-12">
-                    <span className="icon large text-gray-400">
-                      <i className="ri-search-line"></i>
-                    </span>
-                    <input
-                      type="search"
-                      placeholder="Procure por seu produto"
-                      className="bg-transparent outline-none text-gray-700 placeholder-gray-500"
-                    />
-                    <button
-                      type="submit"
-                      className="bg-red-500 hover:bg-black text-white py-1 px-4 rounded-md"
-                    >
-                      Procure
-                    </button>
-                  </form>
-                  <button style={{ color: 'black', fontSize: '3rem' }}>
-                    <image src={carrinho} alt="carrinho" />
-                  </button>
-                </div>
-                
               </ul>
+              <div className="right flex items-center space-x-4">
+                <form className="flex items-center bg-gray-100 rounded-md px-4 py-2 shadow-md ml-12">
+                  <span className="icon large text-gray-400">
+                    <i className="ri-search-line"></i>
+                  </span>
+                  <input
+                    type="search"
+                    placeholder="Procure por seu produto"
+                    className="bg-transparent outline-none text-gray-700 placeholder-gray-500"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-red-500 hover:bg-black text-white py-1 px-4 rounded-md"
+                  >
+                    Procure
+                  </button>
+                </form>
+                <button className="flex items-center space-x-2">
+                  <FontAwesomeIcon icon={faShoppingCart} className="text-white text-2xl" />
+                </button>
+                <button className="flex items-center space-x-2">
+                  <FontAwesomeIcon icon={faHeart} className="text-white text-2xl" />
+                </button>
+                <button className="flex items-center space-x-2">
+                  <FontAwesomeIcon icon={faHeadset} className="text-white text-2xl" />
+                </button>
+              </div>
             </nav>
-            <button className="md:hidden"></button>
+            <div className="absolute inset-x-0 bottom-0 h-7 bg-green-400"></div>
+            <div className="absolute inset-x-0 bottom-0 flex mb-1 justify-center items-center text-white">
+              <p className="text-sm font-bold text-black animate-pulse cursor-pointer">Free Shipping on Orders Over $200</p>
+            </div>
           </div>
         </div>
       </div>
