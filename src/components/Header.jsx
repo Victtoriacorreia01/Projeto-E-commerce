@@ -1,9 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "../assets/logo2.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faHeart, faHeadset } from "@fortawesome/free-solid-svg-icons";
-import '../lib/fontawesome'; 
+import Link from "next/link"
+import Image from "next/image"
+import Logo from "../assets/logo2.png"
+
+import { CiShoppingCart } from "react-icons/ci";
+
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faShoppingCart, faHeart, faHeadset } from "@fortawesome/free-solid-svg-icons";
+// import '../lib/fontawesome'; 
 
 export default function Header() {
   return (
@@ -111,7 +114,10 @@ export default function Header() {
                     Procure
                   </button>
                 </form>
-                <button className="flex items-center space-x-2">
+                <Link href='/cart'>
+                  <CiShoppingCart className='text-white w-10 h-10'/>
+                </Link>
+                {/* <button className="flex items-center space-x-2">
                   <FontAwesomeIcon icon={faShoppingCart} className="text-white text-2xl" />
                 </button>
                 <button className="flex items-center space-x-2">
@@ -119,7 +125,7 @@ export default function Header() {
                 </button>
                 <button className="flex items-center space-x-2">
                   <FontAwesomeIcon icon={faHeadset} className="text-white text-2xl" />
-                </button>
+                </button> */}
               </div>
             </nav>
             <div className="absolute inset-x-0 bottom-0 h-7 bg-green-400"></div>

@@ -1,3 +1,5 @@
+'use client'
+
 import '@fortawesome/fontawesome-free/css/all.css';
 import Image from 'next/image';
 import vestido from '../../../assets/estido.jpg';
@@ -9,8 +11,11 @@ import saia from '../../../assets/saiafem.jpg';
 import chapeu from '../../../assets/chapeu.jpg';
 import blusamanga from '../../../assets/blusabranca.jpg';
 import papete from '../../../assets/papetee.jpg';
+import useCart from '../../../hooks/use-cart';
 
 const Feminino = () => {
+  const { addProductIntoCart } = useCart()
+
   // Array de produtos
   const produtos = [
     { id: 1, nome: "Vestido Floral", preco: 299.99, info: "O mais vendido", imagem: vestido },
@@ -94,7 +99,7 @@ const Feminino = () => {
               <h2 className="text-lg font-semibold mt-2">{produto.nome}</h2>
               <p className="text-gray-600">Preço: R$ {produto.preco.toFixed(2)}</p>
               {produto.info && <p className="text-gray-600">{produto.info}</p>}
-              <button className="mt-1 rounded-full border border-gray-300 p-1"><i className="fas fa-cart-plus text-red-500 hover:text-green-500"></i></button>
+              <button className="mt-1 rounded-full border border-gray-300 p-1" onClick={() => addProductIntoCart(produto)}><i className="fas fa-cart-plus text-red-500 hover:text-green-500"></i></button>
             </div>
           ))}
         </div>

@@ -5,6 +5,8 @@ import 'animate.css/animate.min.css';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import ProviderCart from '../providers/cart-provider'
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,9 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ProviderCart>
+          <Header />
+          {children}
+          <Footer />
+        </ProviderCart>
       </body>
     </html>
   );

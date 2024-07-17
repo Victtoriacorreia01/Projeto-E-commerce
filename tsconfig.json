@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/app/shop/feminino/page.jsx"
-  ],
+, "src/interfaces/products.js"  ],
   "exclude": [
     "node_modules"
   ]

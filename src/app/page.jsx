@@ -75,7 +75,7 @@ export default function Home() {
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
           <div className="text-center md:text-left animate__animated animate__fadeInLeft">
             <p className="text-red-700 font-semibold mb-2 animate__animated animate__bounceInLeft animate__delay-1s">EXTRA 55% OFF IN SPRING SALE</p>
-            <h1 className="text-4xl font-light mb-8 animate__animated animate__fadeInLeft animate__delay-2s">Discover & Shop<br />Don't miss this opportunity</h1>
+            <h1 className="text-4xl font-light mb-8 animate__animated animate__fadeInLeft animate__delay-2s">Discover & Shop<br />Dont miss this opportunity</h1>
             <button className="btn btn-primary px-8 py-2 bg-red-500 text-white rounded animate__animated animate__pulse animate__infinite">SHOP NOW</button>
           </div>
           <div className="w-full md:w-1/2 mt-8 md:mt-0 animate__animated animate__fadeInRight">
