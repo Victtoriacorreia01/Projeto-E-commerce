@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link';
 import React, { useState } from 'react'
 import Logo from "../../../assets/logo.png"
 import Image from "next/image"
@@ -87,12 +88,12 @@ export default function Cadastro() {
                 </div>
             )}
 
-            <div className={`max-w-xl w-full space-y-8 border border-gray-200 rounded-lg p-8 shadow-md ${loading || success ? 'filter blur-sm' : ''}`}>
-                <div className="mt-[-20px] mb-8  flex items-center justify-center">
+            <div className={`max-w-md w-full space-y-8 border border-gray-200 rounded-lg p-6 shadow-md ${loading || success ? 'filter blur-sm' : ''}`}>
+                <div className="mb-6 flex items-center justify-center">
                     <Image
                         className="text-center"
                         src={Logo}
-                        style={{ width: "150px", height: "auto" }}
+                        style={{ width: "120px", height: "auto" }}
                         alt="Logo da Empresa"
                     />
                 </div>
@@ -103,12 +104,12 @@ export default function Cadastro() {
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit, onError)}>
                     <div className="rounded-md shadow-sm -space-y-px">
-                        <div className="mb-6">
-                            <label htmlFor="nome" className="sr-only">
+                        <div className="mb-4">
+                            <label htmlFor="name" className="sr-only">
                                 Nome
                             </label>
                             <input
-                                id="nome"
+                                id="name"
                                 type="text"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-lg"
@@ -117,7 +118,7 @@ export default function Cadastro() {
                             />
                             {errors?.name && <span className='text-red-500 text-sm'>{errors?.name?.message}</span>}
                         </div>
-                        <div className="mb-6">
+                        <div className="mb-4">
                             <label htmlFor="email" className="sr-only">
                                 Email
                             </label>
@@ -133,30 +134,26 @@ export default function Cadastro() {
                         </div>
                     </div>
                     <div className="rounded-md shadow-sm -space-y-px">
-                        <div className="mb-6">
-                            <label htmlFor="senha" className="sr-only">
+                        <div className="mb-4">
+                            <label htmlFor="password" className="sr-only">
                                 Senha
                             </label>
                             <input
-                                id="senha"
-                                name="senha"
+                                id="password"
                                 type="password"
                                 required
-                                className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-lg"
+                                className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-lg"
                                 placeholder="Senha"
                                 {...register('password')}
                             />
                             {errors?.password && <span className='text-red-500 text-sm'>{errors?.password?.message}</span>}
                         </div>
-                    </div>
-                    <div className="rounded-md shadow-sm -space-y-px">
-                        <div className="mb-6">
-                            <label htmlFor="senha" className="sr-only">
+                        <div className="mb-4">
+                            <label htmlFor="passwordConfirmation" className="sr-only">
                                 Confirmar Senha
                             </label>
                             <input
-                                id="senha"
-                                name="senha"
+                                id="passwordConfirmation"
                                 type="password"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-lg"
@@ -167,16 +164,22 @@ export default function Cadastro() {
                         </div>
                     </div>
                     <div>
-                        <button
+                    <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-medium rounded-full text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="group relative px-4 py-1.5 border border-transparent text-lg ml-24 font-medium rounded-full text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            style={{ width: '200px' }}
                         >
                             {isSubmitting || loading ? 'Enviando formulário' : 'Cadastre-se'}
                         </button>
+
                     </div>
-                    <button type='submit' className="text-center hover:text-pink-600" >
-                        <a href="#">Já possui uma conta?</a>
-                    </button>
+                    <Link href="../Login">
+                        <button type='button' className="ml-28 text-center hover:text-pink-600 mt-4">
+                            Já possui uma conta?
+                        </button>
+                    </Link>
+
+
                 </form>
             </div>
         </div>

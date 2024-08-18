@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
 import { useState } from 'react';
 import Logo from "../../../assets/logo.png";
 import Image from "next/image";
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', number: '', message: '' });
@@ -26,13 +27,17 @@ export default function Contact() {
     if (Object.keys(tempErrors).length === 0) {
       setLoading(true);
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('/api/sendEmail', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         });
         const result = await res.json();
-        setResponseMessage(result.message);
+        if (res.ok) {
+          setResponseMessage(result.message);
+        } else {
+          setResponseMessage(result.error || 'Erro ao enviar e-mail');
+        }
         setFormData({ name: '', email: '', number: '', message: '' }); // Limpar os campos do formulário
         setErrors({}); // Limpar os erros
       } catch (error) {
@@ -78,13 +83,15 @@ export default function Contact() {
                   <Image
                     className="text-orange-600"
                     src={Logo}
-                    style={{ width: "150px", height: "auto" }}
+                    style={{ width: '150px', height: 'auto' }}
                     alt="Logo da Empresa"
                   />
                 </div>
                 <div className="block pl-2 font-semibold text-xl self-start text-gray-700">
                   <h2 className="leading-relaxed">Entre em contato</h2>
-                  <p className="text-sm text-gray-500 font-normal leading-relaxed">Envie-nos uma mensagem e responderemos em breve!</p>
+                  <p className="text-sm text-gray-500 font-normal leading-relaxed">
+                    Envie-nos uma mensagem e responderemos em breve!
+                  </p>
                 </div>
               </div>
               <form onSubmit={handleSubmit}>

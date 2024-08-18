@@ -1,10 +1,27 @@
-'use client'
+'use client';
 
-import { useContext } from 'react'
-import { CartContext } from '../contexts/cart-provider'
+
+import { useContext } from 'react';
+import { CartContext } from '../contexts/cart-provider';
 
 const useCart = () => {
-    return useContext(CartContext)
-}
+  const {
+    cart,
+    addProductIntoCart,
+    removeProductFromCart,
+    productCartIncrement,
+    productCartDecrement,
+    fetchCart,
+  } = useContext(CartContext);
 
-export default useCart
+  return {
+    cart,
+    addProductIntoCart,
+    removeProductFromCart,
+    productCartIncrement,
+    productCartDecrement,
+    fetchCart,
+  };
+};
+
+export default useCart;

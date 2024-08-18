@@ -1,85 +1,94 @@
-'use client'
+import React, { createContext, useState, useContext } from 'react';
 
-import { createContext, useState } from 'react'
+// Criar o contexto
+export const CartContext = createContext();
 
-export const CartContext = createContext()
+// Provedor do contexto
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-export function CartProvider({ children }) {
-    const [cart, setCart] = useState([])
+  // Adicionar produto ao carrinho
+  const addProductIntoCart = (product) => {
+    setCart((prevCart) => {
+      const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
 
-    function addProductIntoCart(product) {
-        const productExistentInCart = cart.find(
-            (item) => item.name === product.name && item.id === product.id
-        );
+      if (existingProductIndex > -1) {
+        // Atualizar quantidade se o produto já estiver no carrinho
+        const updatedCart = [...prevCart];
+        updatedCart[existingProductIndex].quantidade += product.quantidade;
+        return updatedCart;
+      } else {
+        // Adicionar novo produto ao carrinho
+        return [...prevCart, { ...product, quantidade: product.quantidade || 1 }];
+      }
+    });
+  };
 
-        if (productExistentInCart) {
-            const newCart = cart.map((item) => {
-                if (item.id === product.id) {
-                    const quantity = item.quantity + 1;
+  // Remover produto do carrinho
+  const removeProductFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
 
-                    return { ...item, quantity };
-                }
+  // Incrementar quantidade do produto
+  const productCartIncrement = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, quantidade: (item.quantidade || 0) + 1 } : item
+      )
+    );
+  };
 
-                return item;
-            });
+  // Decrementar quantidade do produto
+  const productCartDecrement = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.quantidade > 1
+          ? { ...item, quantidade: (item.quantidade || 0) - 1 }
+          : item
+      )
+    );
+  };
 
-            setCart(newCart);
+  // Buscar carrinho (se necessário, pode ser implementado conforme a necessidade)
+  const fetchCart = () => {
+    // Implementar a lógica para buscar o carrinho, se necessário
+  };
 
-            return;
-        }
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        addProductIntoCart,
+        removeProductFromCart,
+        productCartIncrement,
+        productCartDecrement,
+        fetchCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
 
-        const newProduct = { ...product, quantity: 1 };
-        const newCart = [...cart, newProduct];
+// Hook para usar o contexto
+const useCart = () => {
+  const {
+    cart,
+    addProductIntoCart,
+    removeProductFromCart,
+    productCartIncrement,
+    productCartDecrement,
+    fetchCart,
+  } = useContext(CartContext);
 
-        setCart(newCart);
-    }
+  return {
+    cart,
+    addProductIntoCart,
+    removeProductFromCart,
+    productCartIncrement,
+    productCartDecrement,
+    fetchCart,
+  };
+};
 
-    function removeProductFromCart(product) {
-        const newCart = cart.filter(
-            (item) => !(item.id === product.id && item.name === product.name)
-        );
-
-        setCart(newCart);
-    }
-
-    function updateProductQuantity(product, newQuantity) {
-        if (product <= 0) return
-
-        const productExistentInCart = cart.find(
-            (item) => item.id === product.id && item.name === product.name
-        );
-
-        if (!productExistentInCart) return
-
-        const newCart = cart.map((item) => {
-            if (
-                item.id === productExistentInCart.id &&
-                item.name === productExistentInCart.name
-            ) {
-                return {
-                    ...item,
-                    quantity: newQuantity,
-                };
-            }
-
-            return item;
-        });
-
-        setCart(newCart);
-    }
-
-    function productCartIncrement(product) {
-        updateProductQuantity(product, product.quantity + 1)
-    }
-
-    function productCartDecrement(product) {
-        updateProductQuantity(product, product.quantity - 1)
-    }
-
-    return (
-        <CartContext.Provider value={{ cart, addProductIntoCart, removeProductFromCart, productCartIncrement, productCartDecrement }}>
-            {children}
-        </CartContext.Provider>
-    )
-}
-
+export default useCart;
